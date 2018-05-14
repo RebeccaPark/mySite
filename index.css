@@ -1,0 +1,166 @@
+html, body {
+  font-family: "Barlow", sans-serif;
+  font-size: 17px;
+}
+
+.Header {
+  display: flex;
+  position: relative;
+  align-items: flex-end;
+  padding: 30px 180px;
+  border-bottom: 1px solid #E6E6E6;
+}
+
+.Header > div {
+  margin: 15px;
+  vertical-align: bottom;
+}
+
+.Logo:hover .Header__logo {
+  animation: dash 3s linear;
+}
+.Logo:hover .Logo__content {
+  animation: opacity 3s linear;
+}
+
+.Header__logo {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 3s linear forwards;
+}
+
+@keyframes dash {
+  from {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.Logo__content {
+  opacity: 0;
+  animation: opacity 3s linear forwards;
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/*
+.Header .Header__logo {
+    position: relative;
+    border: 2px solid $pink;
+    color: $pink;
+    font-weight: 500;
+    padding: 5px 5px;
+    width: 50px;
+    height: 50px;
+    margin-left: 0;
+}
+
+.Logo__content {
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+}*/
+.Header__menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.Header__menu.Menu--selected {
+  color: #FF3372;
+}
+.Header__menu:hover {
+  color: #FF3372;
+  transition: color 0.3s ease-in-out;
+}
+
+.Header .Header__icons {
+  flex-grow: 1;
+  text-align: right;
+  vertical-align: bottom;
+  margin-right: 0;
+}
+.Header .Header__icons > a {
+  margin-left: 15px;
+  color: rgba(0, 0, 0, 0.4);
+  text-decoration: none;
+}
+
+.Content {
+  display: flex;
+  padding: 100px 180px;
+  background-color: #F9F9F9;
+  height: 100%;
+}
+
+.Content__sideMenu {
+  flex-grow: 1;
+  border: 1px solid #E6E6E6;
+  padding: 20px;
+  padding-right: 100px;
+  color: rgba(0, 0, 0, 0.6);
+  background-color: #FFFFFF;
+  height: fit-content;
+}
+.Content__sideMenu .SideMenu__label {
+  font-size: 0.8rem;
+  margin-bottom: 2rem;
+}
+.Content__sideMenu .SideMenu__menu {
+  margin-bottom: 1rem;
+}
+.Content__sideMenu .SideMenu__menu.selected {
+  color: #FF3372;
+}
+
+.Content__posts {
+  margin-left: 5rem;
+  flex-grow: 10;
+}
+
+.Post {
+  position: relative;
+  border: 1px solid #E6E6E6;
+  padding: 2.5rem;
+  background-color: #FFFFFF;
+  transition: font-size 0.5s ease-in-out;
+  box-sizing: border-box;
+}
+.Post:first-of-type {
+  border-bottom: none;
+}
+.Post .Post__date {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+.Post .Post__title {
+  font-family: "Slabo 27px", serif;
+}
+.Post .Post__colorStick {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 0;
+  width: 3px;
+}
+
+.Post:hover {
+  box-sizing: border-box;
+}
+.Post:hover .Post__colorStick {
+  height: 2em;
+  background-color: #FF3372;
+  transition: height 0.2s ease-in-out;
+}
+.Post:hover .Post__title {
+  color: #FF3372;
+  transition: color 0.3s ease-in-out;
+}
