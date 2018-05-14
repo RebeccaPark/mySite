@@ -51,23 +51,6 @@ html, body {
     opacity: 1;
   }
 }
-/*
-.Header .Header__logo {
-    position: relative;
-    border: 2px solid $pink;
-    color: $pink;
-    font-weight: 500;
-    padding: 5px 5px;
-    width: 50px;
-    height: 50px;
-    margin-left: 0;
-}
-
-.Logo__content {
-    position: absolute;
-    left: 5px;
-    bottom: 5px;
-}*/
 .Header__menu {
   display: flex;
   flex-direction: column;
@@ -124,8 +107,7 @@ html, body {
   margin-left: 5rem;
   flex-grow: 10;
 }
-
-.Post {
+.Content__posts .Post {
   position: relative;
   border: 1px solid #E6E6E6;
   padding: 2.5rem;
@@ -133,34 +115,44 @@ html, body {
   transition: font-size 0.5s ease-in-out;
   box-sizing: border-box;
 }
-.Post:first-of-type {
+.Content__posts .Post:first-of-type {
   border-bottom: none;
 }
-.Post .Post__date {
+.Content__posts .Post .Post__date {
   color: rgba(0, 0, 0, 0.6);
   font-size: 0.8rem;
   margin-bottom: 1rem;
 }
-.Post .Post__title {
+.Content__posts .Post .Post__title {
   font-family: "Slabo 27px", serif;
 }
-.Post .Post__colorStick {
+.Content__posts .Post .Post__colorStick {
   position: absolute;
   left: 0;
   top: 0;
   height: 0;
   width: 3px;
 }
-
-.Post:hover {
+.Content__posts .Post:hover {
   box-sizing: border-box;
 }
-.Post:hover .Post__colorStick {
+.Content__posts .Post:hover .Post__colorStick {
   height: 2em;
   background-color: #FF3372;
   transition: height 0.2s ease-in-out;
 }
-.Post:hover .Post__title {
+.Content__posts .Post:hover .Post__title {
   color: #FF3372;
   transition: color 0.3s ease-in-out;
+}
+
+.Post-detail {
+  margin: 0 auto;
+  width: 70%;
+}
+
+.Post-detail--title {
+  font-family: "Slabo 27px", serif;
+  font-size: 2rem;
+  color: rgba(0, 0, 0, 0.8);
 }

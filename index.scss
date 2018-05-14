@@ -3,12 +3,14 @@ $font--secondary: 'Slabo 27px', serif;
 
 $font--s: 0.8rem;
 $font--med: 1rem;
+$font--xl: 2rem;
 
 $white: #FFFFFF;
 $pink: #FF3372;
 $gray--lightest: #F9F9F9;
 $gray--light: rgba(#000000, 0.4);
 $gray--med: rgba(#000000, 0.6);
+$gray--dark: rgba(#000000, 0.8);
 $gray--border: #E6E6E6;
 
 html, body {
@@ -69,26 +71,6 @@ html, body {
 	opacity: 1;
     }
 }
-
-
-
-/*
-.Header .Header__logo {
-    position: relative;
-    border: 2px solid $pink;
-    color: $pink;
-    font-weight: 500;
-    padding: 5px 5px;
-    width: 50px;
-    height: 50px;
-    margin-left: 0;
-}
-
-.Logo__content {
-    position: absolute;
-    left: 5px;
-    bottom: 5px;
-}*/
 
 .Header__menu {
     display: flex;
@@ -151,50 +133,61 @@ html, body {
 .Content__posts {
     margin-left: 5rem;
     flex-grow: 10;
-}
 
-.Post {
-    position: relative;
-    border: 1px solid $gray--border;
-    padding: 2.5rem;
-    background-color: $white;
-    transition: font-size 0.5s ease-in-out;
-    box-sizing: border-box;
-    
-    &:first-of-type {
-	border-bottom: none;
-    }
-    
-    .Post__date {
-	color: $gray--med;
-	font-size: $font--s;
-	margin-bottom: 1rem;
-    }
-    .Post__title {
-	font-family: $font--secondary;
-    }
-
-    .Post__colorStick {
-	position: absolute;
-	left: 0;
-	top: 0;
-	height: 0;
-	width: 3px;
-    }
-}
-
-.Post:hover {
-    box-sizing: border-box;
-
-    .Post__colorStick {
-	height: 2em;
-	background-color: $pink;
-	transition: height 0.2s ease-in-out;
+    .Post {
+	position: relative;
+	border: 1px solid $gray--border;
+	padding: 2.5rem;
+	background-color: $white;
+	transition: font-size 0.5s ease-in-out;
+	box-sizing: border-box;
 	
+	&:first-of-type {
+	    border-bottom: none;
+	}
+	
+	.Post__date {
+	    color: $gray--med;
+	    font-size: $font--s;
+	    margin-bottom: 1rem;
+	}
+	.Post__title {
+	    font-family: $font--secondary;
+	}
+
+	.Post__colorStick {
+	    position: absolute;
+	    left: 0;
+	    top: 0;
+	    height: 0;
+	    width: 3px;
+	}
     }
-    
-    .Post__title {
-	color: $pink;
-	transition: color 0.3s ease-in-out;
+
+    .Post:hover {
+	box-sizing: border-box;
+
+	.Post__colorStick {
+	    height: 2em;
+	    background-color: $pink;
+	    transition: height 0.2s ease-in-out;
+	    
+	}
+	
+	.Post__title {
+	    color: $pink;
+	    transition: color 0.3s ease-in-out;
+	}
     }
+}
+
+.Post-detail {
+    margin: 0 auto;
+    width: 70%;
+}
+
+.Post-detail--title {
+    font-family: $font--secondary;
+    font-size: $font--xl;
+    color: $gray--dark;
 }
