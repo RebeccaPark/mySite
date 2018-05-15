@@ -3,6 +3,7 @@ $font--secondary: 'Slabo 27px', serif;
 
 $font--s: 0.8rem;
 $font--med: 1rem;
+$font--lg: 1.2rem;
 $font--xl: 2rem;
 
 $white: #FFFFFF;
@@ -102,7 +103,7 @@ html, body {
 
 .Content {
     display: flex;
-    padding: 100px 180px;
+    padding: 80px 180px;
     background-color: $gray--lightest;
     height: 100%;
 }
@@ -181,13 +182,26 @@ html, body {
     }
 }
 
-.Post-detail {
-    margin: 0 auto;
-    width: 70%;
-}
+.Content {
+    .Post {
+	margin: 0 auto;
+	width: 50%;
+    }
 
-.Post-detail--title {
-    font-family: $font--secondary;
-    font-size: $font--xl;
-    color: $gray--dark;
+    .Post__title {
+	font-family: $font--secondary;
+	font-size: $font--xl;
+	color: $gray--dark;
+    }
+
+    .Post__date {
+	color: $gray--med;
+	font-size: $font--med;
+    }
+
+    .Post__content {
+	color: $gray--med;
+	font-size: $font--lg;
+	margin-top: 3rem;
+    }
 }

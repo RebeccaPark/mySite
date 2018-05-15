@@ -78,7 +78,7 @@ html, body {
 
 .Content {
   display: flex;
-  padding: 100px 180px;
+  padding: 80px 180px;
   background-color: #F9F9F9;
   height: 100%;
 }
@@ -146,13 +146,21 @@ html, body {
   transition: color 0.3s ease-in-out;
 }
 
-.Post-detail {
+.Content .Post {
   margin: 0 auto;
-  width: 70%;
+  width: 50%;
 }
-
-.Post-detail--title {
+.Content .Post__title {
   font-family: "Slabo 27px", serif;
   font-size: 2rem;
   color: rgba(0, 0, 0, 0.8);
+}
+.Content .Post__date {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 1rem;
+}
+.Content .Post__content {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 1.2rem;
+  margin-top: 3rem;
 }
