@@ -131,57 +131,6 @@ html, body {
     }
 }
 
-.Content__posts {
-    margin-left: 5rem;
-    flex-grow: 10;
-
-    .Post {
-	position: relative;
-	border: 1px solid $gray--border;
-	padding: 2.5rem;
-	background-color: $white;
-	transition: font-size 0.5s ease-in-out;
-	box-sizing: border-box;
-	
-	&:first-of-type {
-	    border-bottom: none;
-	}
-	
-	.Post__date {
-	    color: $gray--med;
-	    font-size: $font--s;
-	    margin-bottom: 1rem;
-	}
-	.Post__title {
-	    font-family: $font--secondary;
-	}
-
-	.Post__colorStick {
-	    position: absolute;
-	    left: 0;
-	    top: 0;
-	    height: 0;
-	    width: 3px;
-	}
-    }
-
-    .Post:hover {
-	box-sizing: border-box;
-
-	.Post__colorStick {
-	    height: 2em;
-	    background-color: $pink;
-	    transition: height 0.2s ease-in-out;
-	    
-	}
-	
-	.Post__title {
-	    color: $pink;
-	    transition: color 0.3s ease-in-out;
-	}
-    }
-}
-
 .Content {
     .Post {
 	margin: 0 auto;
@@ -189,7 +138,7 @@ html, body {
     }
 
     .Post__title {
-	font-family: $font--secondary;
+	font-family: $font--primary;
 	font-size: $font--xl;
 	color: $gray--dark;
     }
@@ -203,5 +152,60 @@ html, body {
 	color: $gray--med;
 	font-size: $font--lg;
 	margin-top: 3rem;
+    }
+}
+
+.Postlist {
+    margin-left: 5rem;
+    flex-grow: 10;
+
+    .Postlist__post {
+	position: relative;
+	border: 1px solid $gray--border;
+	padding: 2.5rem;
+	background-color: $white;
+	transition: font-size 0.5s ease-in-out;
+	box-sizing: border-box;
+	
+	&:first-of-type {
+	    border-bottom: none;
+	}
+	
+	.Postlist__date {
+	    color: $gray--med;
+	    font-size: $font--s;
+	    margin-bottom: 1rem;
+	}
+	.Postlist__title {
+	    font-family: $font--primary;//--secondary;
+	}
+
+	.Postlist__colorStick {
+	    position: absolute;
+	    left: 0;
+	    top: 0;
+	    height: 0;
+	    width: 3px;
+	}
+
+	a, a:hover, a:focus {
+	    text-decoration: none;
+	}
+    }
+
+    .Postlist__post:hover {
+	box-sizing: border-box;
+
+	.Postlist__colorStick {
+	    height: 2em;
+	    background-color: $pink;
+	    transition: height 0.2s ease-in-out;
+	    
+	}
+	
+	.Postlist__title {
+	    color: $pink;
+	    transition: color 0.3s ease-in-out;
+	}
     }
 }

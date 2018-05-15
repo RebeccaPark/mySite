@@ -103,55 +103,12 @@ html, body {
   color: #FF3372;
 }
 
-.Content__posts {
-  margin-left: 5rem;
-  flex-grow: 10;
-}
-.Content__posts .Post {
-  position: relative;
-  border: 1px solid #E6E6E6;
-  padding: 2.5rem;
-  background-color: #FFFFFF;
-  transition: font-size 0.5s ease-in-out;
-  box-sizing: border-box;
-}
-.Content__posts .Post:first-of-type {
-  border-bottom: none;
-}
-.Content__posts .Post .Post__date {
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 0.8rem;
-  margin-bottom: 1rem;
-}
-.Content__posts .Post .Post__title {
-  font-family: "Slabo 27px", serif;
-}
-.Content__posts .Post .Post__colorStick {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 0;
-  width: 3px;
-}
-.Content__posts .Post:hover {
-  box-sizing: border-box;
-}
-.Content__posts .Post:hover .Post__colorStick {
-  height: 2em;
-  background-color: #FF3372;
-  transition: height 0.2s ease-in-out;
-}
-.Content__posts .Post:hover .Post__title {
-  color: #FF3372;
-  transition: color 0.3s ease-in-out;
-}
-
 .Content .Post {
   margin: 0 auto;
   width: 50%;
 }
 .Content .Post__title {
-  font-family: "Slabo 27px", serif;
+  font-family: "Barlow", sans-serif;
   font-size: 2rem;
   color: rgba(0, 0, 0, 0.8);
 }
@@ -163,4 +120,50 @@ html, body {
   color: rgba(0, 0, 0, 0.6);
   font-size: 1.2rem;
   margin-top: 3rem;
+}
+
+.Postlist {
+  margin-left: 5rem;
+  flex-grow: 10;
+}
+.Postlist .Postlist__post {
+  position: relative;
+  border: 1px solid #E6E6E6;
+  padding: 2.5rem;
+  background-color: #FFFFFF;
+  transition: font-size 0.5s ease-in-out;
+  box-sizing: border-box;
+}
+.Postlist .Postlist__post:first-of-type {
+  border-bottom: none;
+}
+.Postlist .Postlist__post .Postlist__date {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+.Postlist .Postlist__post .Postlist__title {
+  font-family: "Barlow", sans-serif;
+}
+.Postlist .Postlist__post .Postlist__colorStick {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 0;
+  width: 3px;
+}
+.Postlist .Postlist__post a, .Postlist .Postlist__post a:hover, .Postlist .Postlist__post a:focus {
+  text-decoration: none;
+}
+.Postlist .Postlist__post:hover {
+  box-sizing: border-box;
+}
+.Postlist .Postlist__post:hover .Postlist__colorStick {
+  height: 2em;
+  background-color: #FF3372;
+  transition: height 0.2s ease-in-out;
+}
+.Postlist .Postlist__post:hover .Postlist__title {
+  color: #FF3372;
+  transition: color 0.3s ease-in-out;
 }
