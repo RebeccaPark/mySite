@@ -25,11 +25,18 @@ html, body {
     align-items: flex-end;
     padding: 30px 180px;
     border-bottom: 1px solid #E6E6E6;
+
+    a, a:hover, a:active, a:visited {
+	text-decoration: none;
+	color: inherit;
+    }
 }
 
 .Header > div {
     margin: 15px;
+    margin-bottom: 0;
     vertical-align: bottom;
+    font-size: $font--med;
 }
 
 .Logo:hover {
@@ -131,28 +138,26 @@ html, body {
     }
 }
 
-.Content {
-    .Post {
-	margin: 0 auto;
-	width: 50%;
-    }
+.Post {
+    margin: 0 auto;
+    width: 50%;
+}
 
-    .Post__title {
-	font-family: $font--primary;
-	font-size: $font--xl;
-	color: $gray--dark;
-    }
+.Post__title {
+    font-family: $font--primary;
+    font-size: $font--xl;
+    color: $gray--dark;
+}
 
-    .Post__date {
-	color: $gray--med;
-	font-size: $font--med;
-    }
+.Post__date {
+    color: $gray--med;
+    font-size: $font--med;
+}
 
-    .Post__content {
-	color: $gray--med;
-	font-size: $font--lg;
-	margin-top: 3rem;
-    }
+.Post__content {
+    color: $gray--med;
+    font-size: $font--lg;
+    margin-top: 3rem;
 }
 
 .Postlist {
@@ -188,8 +193,9 @@ html, body {
 	    width: 3px;
 	}
 
-	a, a:hover, a:focus {
+	a, a:hover, a:focus, a:visited {
 	    text-decoration: none;
+	    color: inherit;
 	}
     }
 
@@ -199,13 +205,35 @@ html, body {
 	.Postlist__colorStick {
 	    height: 2em;
 	    background-color: $pink;
-	    transition: height 0.2s ease-in-out;
-	    
+	    transition: height 0.2s ease-in-out;	    
 	}
-	
-	.Postlist__title {
-	    color: $pink;
-	    transition: color 0.3s ease-in-out;
-	}
+    }
+}
+
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .Header{
+	padding: 30px 60px;
+	font-size: $font--lg;
+    }
+    
+    .Content {
+	padding: 50px 60px;
+    }
+    
+    .Content__sideMenu {
+	padding-right: 20px; 
+    }
+
+    .Postlist {
+	margin-left: 2rem;
+    }
+    
+    .Content__previous {
+	display: none;
+    }
+    
+    .Post {
+	width: 100%;
     }
 }

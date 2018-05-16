@@ -10,10 +10,16 @@ html, body {
   padding: 30px 180px;
   border-bottom: 1px solid #E6E6E6;
 }
+.Header a, .Header a:hover, .Header a:active, .Header a:visited {
+  text-decoration: none;
+  color: inherit;
+}
 
 .Header > div {
   margin: 15px;
+  margin-bottom: 0;
   vertical-align: bottom;
+  font-size: 1rem;
 }
 
 .Logo:hover .Header__logo {
@@ -103,20 +109,23 @@ html, body {
   color: #FF3372;
 }
 
-.Content .Post {
+.Post {
   margin: 0 auto;
   width: 50%;
 }
-.Content .Post__title {
+
+.Post__title {
   font-family: "Barlow", sans-serif;
   font-size: 2rem;
   color: rgba(0, 0, 0, 0.8);
 }
-.Content .Post__date {
+
+.Post__date {
   color: rgba(0, 0, 0, 0.6);
   font-size: 1rem;
 }
-.Content .Post__content {
+
+.Post__content {
   color: rgba(0, 0, 0, 0.6);
   font-size: 1.2rem;
   margin-top: 3rem;
@@ -152,8 +161,9 @@ html, body {
   height: 0;
   width: 3px;
 }
-.Postlist .Postlist__post a, .Postlist .Postlist__post a:hover, .Postlist .Postlist__post a:focus {
+.Postlist .Postlist__post a, .Postlist .Postlist__post a:hover, .Postlist .Postlist__post a:focus, .Postlist .Postlist__post a:visited {
   text-decoration: none;
+  color: inherit;
 }
 .Postlist .Postlist__post:hover {
   box-sizing: border-box;
@@ -163,7 +173,30 @@ html, body {
   background-color: #FF3372;
   transition: height 0.2s ease-in-out;
 }
-.Postlist .Postlist__post:hover .Postlist__title {
-  color: #FF3372;
-  transition: color 0.3s ease-in-out;
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .Header {
+    padding: 30px 60px;
+    font-size: 1.2rem;
+  }
+
+  .Content {
+    padding: 50px 60px;
+  }
+
+  .Content__sideMenu {
+    padding-right: 20px;
+  }
+
+  .Postlist {
+    margin-left: 2rem;
+  }
+
+  .Content__previous {
+    display: none;
+  }
+
+  .Post {
+    width: 100%;
+  }
 }
