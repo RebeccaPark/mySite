@@ -22,13 +22,6 @@ html, body {
   font-size: 1rem;
 }
 
-.Logo:hover .Header__logo {
-  animation: dash 3s linear;
-}
-.Logo:hover .Logo__content {
-  animation: opacity 3s linear;
-}
-
 .Header__logo {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
@@ -44,11 +37,6 @@ html, body {
     stroke-dashoffset: 0;
   }
 }
-.Logo__content {
-  opacity: 0;
-  animation: opacity 3s linear forwards;
-}
-
 @keyframes opacity {
   from {
     opacity: 0;
@@ -153,6 +141,7 @@ html, body {
 }
 .Postlist .Postlist__post .Postlist__title {
   font-family: "Barlow", sans-serif;
+  font-size: 1rem;
 }
 .Postlist .Postlist__post .Postlist__colorStick {
   position: absolute;
@@ -165,31 +154,61 @@ html, body {
   text-decoration: none;
   color: inherit;
 }
-.Postlist .Postlist__post:hover {
+.Postlist .Postlist__post:hover, .Postlist .Postlist__post:active, .Postlist .Postlist__post:focus {
   box-sizing: border-box;
 }
-.Postlist .Postlist__post:hover .Postlist__colorStick {
+.Postlist .Postlist__post:hover .Postlist__colorStick, .Postlist .Postlist__post:active .Postlist__colorStick, .Postlist .Postlist__post:focus .Postlist__colorStick {
   height: 2em;
   background-color: #FF3372;
   transition: height 0.2s ease-in-out;
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .Logo {
+    width: 40px;
+    height: 40px;
+  }
+
   .Header {
-    padding: 30px 60px;
+    padding: 10px 30px;
     font-size: 1.2rem;
+  }
+  .Header .Header__icons > a {
+    margin-left: 5px;
+    font-size: 0.8rem;
+  }
+  .Header .Header__menu {
+    margin-left: 10px;
+    margin-right: 0;
+    font-size: 0.8rem;
   }
 
   .Content {
-    padding: 50px 60px;
+    padding: 20px 30px;
   }
 
   .Content__sideMenu {
-    padding-right: 20px;
+    display: none;
   }
 
   .Postlist {
-    margin-left: 2rem;
+    margin-left: 0;
+  }
+
+  .Postlist__post {
+    padding: 0.8rem;
+  }
+
+  .Post__title {
+    font-size: 1.2rem;
+  }
+
+  .Post__date {
+    font-size: 0.8rem;
+  }
+
+  .Post__content {
+    font-size: 0.8rem;
   }
 
   .Content__previous {

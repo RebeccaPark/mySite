@@ -1,6 +1,7 @@
 $font--primary: 'Barlow', sans-serif;
 $font--secondary: 'Slabo 27px', serif;
 
+$font--xs: 0.6rem;
 $font--s: 0.8rem;
 $font--med: 1rem;
 $font--lg: 1.2rem;
@@ -39,15 +40,15 @@ html, body {
     font-size: $font--med;
 }
 
-.Logo:hover {
-    .Header__logo {
-	animation: dash 3s linear;
-    }
+//.Logo:hover {
+  //  .Header__logo {
+//	animation: dash 3s linear;
+  //  }
 
-    .Logo__content {
-	animation: opacity 3s linear;
-    }
-}
+    //.Logo__content {
+    //animation: opacity 3s linear;
+    //}
+//}
 
 .Header__logo {
     stroke-dasharray: 1000;
@@ -66,10 +67,10 @@ html, body {
     }
 }
 
-.Logo__content {
-    opacity: 0;
-    animation: opacity 3s linear forwards;
-}
+//.Logo__content {
+  //  opacity: 0;
+    //animation: opacity 3s linear forwards;
+//}
 
 @keyframes opacity {
     from {
@@ -183,6 +184,7 @@ html, body {
 	}
 	.Postlist__title {
 	    font-family: $font--primary;//--secondary;
+	    font-size: $font--med;
 	}
 
 	.Postlist__colorStick {
@@ -199,7 +201,7 @@ html, body {
 	}
     }
 
-    .Postlist__post:hover {
+    .Postlist__post:hover, .Postlist__post:active, .Postlist__post:focus {
 	box-sizing: border-box;
 
 	.Postlist__colorStick {
@@ -212,21 +214,58 @@ html, body {
 
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .Logo {
+	width: 40px;
+	height: 40px;
+    }
+
     .Header{
-	padding: 30px 60px;
+	padding: 10px 30px;
 	font-size: $font--lg;
+
+	.Header__icons > a {
+	    margin-left: 5px;
+	    font-size: $font--s;
+	}
+
+	.Header__menu {
+	    margin-left: 10px;
+	    margin-right: 0;
+	    font-size: $font--s;
+	}
+
     }
     
     .Content {
-	padding: 50px 60px;
+	padding: 20px 30px;
     }
     
     .Content__sideMenu {
-	padding-right: 20px; 
+	display: none;
     }
 
     .Postlist {
-	margin-left: 2rem;
+	margin-left: 0;
+    }
+
+    .Postlist__date {
+	
+    }
+
+    .Postlist__post {
+	padding: 0.8rem;
+    }
+
+    .Post__title {
+	font-size: $font--lg;
+    }
+
+    .Post__date {
+	font-size: $font--s;
+    }
+
+    .Post__content {
+	font-size: $font--s;
     }
     
     .Content__previous {
