@@ -73,8 +73,6 @@ html, body {
 .Content {
   display: flex;
   padding: 80px 180px;
-  background-color: #F9F9F9;
-  height: 100%;
 }
 
 .Content__sideMenu {
@@ -95,6 +93,14 @@ html, body {
 }
 .Content__sideMenu .SideMenu__menu.selected {
   color: #FF3372;
+}
+
+.Content__previous {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.6);
+}
+.Content__previous:visited {
+  color: inherit;
 }
 
 .Post {
@@ -120,19 +126,26 @@ html, body {
 }
 
 .Postlist {
-  margin-left: 5rem;
   flex-grow: 10;
 }
 .Postlist .Postlist__post {
+  display: block;
   position: relative;
   border: 1px solid #E6E6E6;
   padding: 2.5rem;
   background-color: #FFFFFF;
   transition: font-size 0.5s ease-in-out;
   box-sizing: border-box;
+  text-decoration: none;
+}
+.Postlist .Postlist__post:visited {
+  color: inherit;
 }
 .Postlist .Postlist__post:first-of-type {
   border-bottom: none;
+}
+.Postlist .Postlist__post:last-of-type {
+  border-bottom: 1px solid #E6E6E6;
 }
 .Postlist .Postlist__post .Postlist__date {
   color: rgba(0, 0, 0, 0.6);
@@ -150,8 +163,7 @@ html, body {
   height: 0;
   width: 3px;
 }
-.Postlist .Postlist__post a, .Postlist .Postlist__post a:hover, .Postlist .Postlist__post a:focus, .Postlist .Postlist__post a:visited {
-  text-decoration: none;
+.Postlist .Postlist__post .Postlist__post:hover, .Postlist .Postlist__post .Postlist__post:active, .Postlist .Postlist__post .Postlist__post:visited {
   color: inherit;
 }
 .Postlist .Postlist__post:hover, .Postlist .Postlist__post:active, .Postlist .Postlist__post:focus {
@@ -162,8 +174,80 @@ html, body {
   background-color: #FF3372;
   transition: height 0.2s ease-in-out;
 }
+.Postlist .Postlist__image {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 20%;
+  height: 100%;
+}
+.Postlist .Postlist__image img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-position: 50% 50%;
+}
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+pre {
+  border: 1px solid #E6E6E6;
+  background: #F9F9F9;
+  padding: 0 1.5rem;
+}
+
+.highlight {
+  background-color: #FFFED7;
+}
+
+@media (max-width: 1400px) {
+  .Post {
+    width: 60%;
+  }
+}
+@media (max-width: 1228px) {
+  .Post {
+    width: 70%;
+  }
+}
+@media (max-width: 1100px) {
+  .Header {
+    padding: 30px 100px;
+  }
+
+  .Content {
+    padding: 80px 100px;
+  }
+}
+@media (max-width: 950px) {
+  .Header {
+    padding: 30px 50px;
+  }
+
+  .Content {
+    padding: 80px 50px;
+  }
+
+  .Post {
+    width: 90%;
+  }
+}
+@media (max-width: 690px) {
+  .Header {
+    padding: 30px 20px;
+  }
+
+  .Content {
+    padding: 80px 20px;
+  }
+
+  .Post {
+    width: 100%;
+  }
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 696px) {
+  html, body {
+    margin: 0;
+  }
+
   .Logo {
     width: 40px;
     height: 40px;
@@ -184,7 +268,7 @@ html, body {
   }
 
   .Content {
-    padding: 20px 30px;
+    padding: 0;
   }
 
   .Content__sideMenu {
