@@ -250,6 +250,7 @@ pre {
     border: 1px solid $gray--border;
     background: $gray--lightest;
     padding: 0 1.5rem;
+    overflow: scroll;
 }
 
 .highlight {
@@ -301,7 +302,7 @@ pre {
     }
 
     .Post {
-	width: 100%;
+	width: 95%;
     }
 }
 
@@ -317,7 +318,7 @@ pre {
     }
 
     .Header{
-	padding: 10px 30px;
+	padding: 20px 13px;
 	font-size: $font--lg;
 
 	.Header__icons > a {
@@ -334,7 +335,7 @@ pre {
     }
     
     .Content {
-	padding: 0;
+	padding: 20px 13px;
     }
     
     .Content__sideMenu {

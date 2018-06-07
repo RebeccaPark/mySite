@@ -192,6 +192,7 @@ pre {
   border: 1px solid #E6E6E6;
   background: #F9F9F9;
   padding: 0 1.5rem;
+  overflow: scroll;
 }
 
 .highlight {
@@ -240,7 +241,7 @@ pre {
   }
 
   .Post {
-    width: 100%;
+    width: 95%;
   }
 }
 @media only screen and (min-device-width: 320px) and (max-device-width: 696px) {
@@ -254,7 +255,7 @@ pre {
   }
 
   .Header {
-    padding: 10px 30px;
+    padding: 20px 13px;
     font-size: 1.2rem;
   }
   .Header .Header__icons > a {
@@ -268,7 +269,7 @@ pre {
   }
 
   .Content {
-    padding: 0;
+    padding: 20px 13px;
   }
 
   .Content__sideMenu {
