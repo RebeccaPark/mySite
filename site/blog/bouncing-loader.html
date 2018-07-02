@@ -15,21 +15,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-    <div class="Header">
-      <svg class="Logo" viewBox="0 0 70 70" width="70px" height="70px">
-	<path class="Header__logo" d="M0,0h70v70h-70v-70z" stroke="#FF3372" fill="none" stroke-width="3" />
-	<text class="Logo__content" x="5" y="65" stroke="#FF3372" font-weight="300" font-size="15px">RP</text>
-      </svg>
-      <!--<div class="Header__menu">Work</div>-->
-      <div class="Header__menu Menu--selected"><a href="/">Blog</a></div>
-      <div class="Header__icons">
-	<a class="fab fa-twitter" href="https://twitter.com/RebeccaJYPark"></a>
-	<a class="fab fa-github" href="https://github.com/RebeccaPark"></a>
-	<a class="fas fa-envelope"></a>
+    <div class="HeaderWrapper">
+      <div class="Header">
+	<svg class="Logo" viewBox="0 0 70 70" width="70px" height="70px">
+	  <path class="Header__logo" d="M0,0h70v70h-70v-70z" stroke="#FF3372" fill="none" stroke-width="3" />
+	  <text class="Logo__content" x="5" y="65" stroke="#FF3372" font-weight="300" font-size="15px">RP</text>
+	</svg>
+	<!--<div class="Header__menu">Work</div>-->
+	<div class="Header__menu Menu--selected"><a href="/">Blog</a></div>
+	<div class="Header__icons">
+	  <a class="fab fa-twitter" href="https://twitter.com/RebeccaJYPark"></a>
+	  <a class="fab fa-github" href="https://github.com/RebeccaPark"></a>
+	  <a class="fas fa-envelope"></a>
+	</div>
       </div>
     </div>
     <div class="Content">
-      <a class="Content__previous fa fa-angle-left" href="/"></a>
       <div class="Post">
 	<div class="Post__title">Bouncing Loader</div>
 	<div class="Post__date">May 15, 2018</div>
@@ -39,41 +40,31 @@
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 	  <p>This is how I went about making this css animation.</p>
 	  <h1>HTML</h1>
-	  <p>In terms of HTML, I really dind't need much:</p>
-	  <pre>
-	    <code>
-&lt;div class="loader"&gt;
+	  <p>In terms of HTML, I really didn't need much:</p>
+	  <pre><code>&lt;div class="loader"&gt;
   &lt;div class="wrapper"&gt;
     &lt;div class="circle circle--1"&gt;&lt;/div&gt;
     &lt;div class="circle circle--2"&gt;&lt;/div&gt;
     &lt;div class="circle circle--3"&gt;&lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;
-	    </code>
-	  </pre>
+&lt;/div&gt;</code></pre>
 	  <h1>Animating</h1>
 	  <p>For animating, I created keyframes for each circle. <span class="highlight">@keyframes move--1</span> for <span class="highlight">.circle--1</span>, <span class="highlight">@keyframes move--2</span> for <span class="highlight">.circle--2</span>, and <span class="highlight">@keyframes move--3</span> for <span class="highlight">.circle--3</span></p>
 	  <h3>translateY</h3>
-	  <p>To move the circles up, I gave negative <span class="highlight">translateY</span> valeus for the keyframes when the circles are intended to reach the peak. For <span class="highlight">.circle--1</span> I gave <span class="highlight">translateY(-130%)</span>, <span class="highlight">translateY(-145%)</span> for <span class="highlight">.circle--2</span> and <span class="highlight">translateY(-160%)</span> for <span class="highlight">.circle--3</span>.</p>
+	  <p>To move the circles up, I gave negative <span class="highlight">translateY</span> values for the keyframes when the circles are intended to reach the peak. For <span class="highlight">.circle--1</span> I gave <span class="highlight">translateY(-130%)</span>, <span class="highlight">translateY(-145%)</span> for <span class="highlight">.circle--2</span> and <span class="highlight">translateY(-160%)</span> for <span class="highlight">.circle--3</span>.</p>
 	  <p>To move the circles back down and also have them stay down at the times needed, I gave <span class="highlight">translateY(0)</span> for the keyframes when the circles are intended to stay at the ground floor.</p>
 	  <h5>What does % value do for translate?</h5>
-	  <p>% value for <span class="highlight">translate</span> results in the calculation based on the width and height of the element. For example, <span class="highlight">translateX(100%)</span> moves the elelement to the right by 100% of its width, and <span class="highlight">translateY(150%)</span> moves the element lower to the bottom by 150% of its height.</p>
-	  <h5>Timnig for each cricle</h5>
-	  <p>One part was clear from the start. All three circles should start out and finish at the same 'groundfloor'(<span class="highlight">translateY(0)</span>). Therefore: </p>
-	  <pre>
-	    <code>
-@keyframes move--# {
+	  <p>% value for <span class="highlight">translate</span> results in the calculation based on the width and height of the element. For example, <span class="highlight">translateX(100%)</span> moves the element to the right by 100% of its width, and <span class="highlight">translateY(150%)</span> moves the element lower to the bottom by 150% of its height.</p>
+	  <h5>Timing for each cricle</h5>
+	  <p>One part was clear from the start. All three circles should start out and finish at the same 'ground floor'(<span class="highlight">translateY(0)</span>). Therefore: </p>
+	  <pre><code>@keyframes move--# {
   0%, 100% {
     transform: translateY(0);
   }
-}
-	    </code>
-	  </pre>
+}</code></pre>
 	  <p>But how do I get the circles to jump in order throughout the infinite iteration?</p>
 	  <p>At first, I set it so that each circle reaches its peak at keyframe 50%: </p>
-	  <pre>
-	    <code>
-@keyframes move--# {
+	  <pre><code>@keyframes move--# {
   0%, 100% {
     transform: translateY(0);
   }
@@ -84,18 +75,16 @@
 }
 	    </code>
 	  </pre>
-	  <p>With this setup, I tried applying different combinations of <span class="highlight">animation-delay</span> and <span class="highlight">animation-duration</span> for each circle in hopes of acheiving the orderly jumps. But all the combinations quickly muddled up the order like the following.</p>
+	  <p>With this setup, I tried applying different combinations of <span class="highlight">animation-delay</span> and <span class="highlight">animation-duration</span> for each circle in hopes of achieving the orderly jumps. But all the combinations quickly muddled up the order like the following.</p>
 	  <p data-height="265" data-theme-id="0" data-slug-hash="RyOoqz" data-default-tab="result" data-user="RebeccaPark" data-embed-version="2" data-pen-title="Bouncing Loader--failure" class="codepen">See the Pen <a href="https://codepen.io/RebeccaPark/pen/RyOoqz/">Bouncing Loader--failure</a> by Rebecca (<a href="https://codepen.io/RebeccaPark">@RebeccaPark</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 	  <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 	  <h5>animation-delay</h5>
-	  <p>I was missing a key information when I was using <span class="highlight">animation-delay</span> to control the movements of the circles for more than one iteraion: <span class="highlight">animation-delay</span> only works on the very first iteration. No wonder I couldn't have the circles to wait till they are supposed to be moving.</p>
+	  <p>I was missing a key information when I was using <span class="highlight">animation-delay</span> to control the movements of the circles for more than one iteration: <span class="highlight">animation-delay</span> only works on the very first iteration. No wonder I couldn't have the circles to wait till they are supposed to be moving.</p>
 	  <h5>When in doubt, draw it out</h5>
-	  <p>After much frustration with all the guess work, I decided to make use of my whiteboard. Without any specific numbers in mind, I drew out 3 diagrams indicating when each circle should be in motion and should not be in motion. I cleaned up and color-coded the diagram for the post: </p>
+	  <p>After much frustration with all the guess work, I decided to make use of my whiteboard. Without any specific numbers in mind, I drew out 3 diagrams indicating when each circle should be in motion and should not be in motion. I cleaned up and color coded the diagram for the post: </p>
 	  <img src="/bouncingLoader__diagram.jpg" style="max-width:100%;">
 	  <p>The lines in blue are when the circles are in motion, and the lines in black are when the circles stay still at the starting ground. One iteration of the animation, which lasts for 2 seconds, ends with the end of motion for <span class="highlight">.circle--3</span>. The other two circles stay still until then after they are done with their motions. I arbitrarily assumed that the circles will be in motion for about 60% of the 2 seconds (2 sec * 0.6 = 1.2 sec), and each circle will reach its peak height in the middle of that 1.2 seconds. This resulted in these keyframes for each circle:</p>
-<pre>
-  <code>
-@keyframes move--1 { // In motion from 0% to 60%.
+<pre><code>@keyframes move--1 { // In motion from 0% to 60%.
   0%, 60%, 100% {
     transform:translateY(0);
   }
@@ -120,39 +109,30 @@
     transform: translateY(0);
   }
 
-  60% { // Hlafway point between 40% and 100%.
+  60% { // Halfway point between 40% and 100%.
     transform: translateY(-160%);
   }
-}
-  </code>
-</pre>
+}</code></pre>
 	  <p>The result of these keyframes is this:</p>
 <p data-height="265" data-theme-id="0" data-slug-hash="wjXpPm" data-default-tab="result" data-user="RebeccaPark" data-embed-version="2" data-pen-title="Bouncing Loader--only height" class="codepen">See the Pen <a href="https://codepen.io/RebeccaPark/pen/wjXpPm/">Bouncing Loader--only height</a> by Rebecca (<a href="https://codepen.io/RebeccaPark">@RebeccaPark</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 	  <h5>Missing that oomph?</h5>
 	  <p>We got the movement correct, but I think it looks a little more tamed that that I hoped.</p>
-	  <p>So I added in variation in opacity and scaling to the animation. When on groundfloor, the circles have <span class="highlight">opacity: 0.25</span> and <span class="highlight">transform: scale(0.8)</span>, and at the peak, they have <span class="highlight">opacity: 0.9</span> and <span class="highlight">transform: scale(1)</span>. This results in the animation we want:</p>
+	  <p>So I added in variation in opacity and scaling to the animation. When on ground floor, the circles have <span class="highlight">opacity: 0.25</span> and <span class="highlight">transform: scale(0.8)</span>, and at the peak, they have <span class="highlight">opacity: 0.9</span> and <span class="highlight">transform: scale(1)</span>. This results in the animation we want:</p>
 	  <p data-height="265" data-theme-id="0" data-slug-hash="zjPQpb" data-default-tab="result" data-user="RebeccaPark" data-embed-version="2" data-pen-title="Bouncing Loader" class="codepen">See the Pen <a href="https://codepen.io/RebeccaPark/pen/zjPQpb/">Bouncing Loader</a> by Rebecca (<a href="https://codepen.io/RebeccaPark">@RebeccaPark</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 	  <h1>Clean up</h1>
 	  <p>For the redundant parts in the <span class="highlight">@keyframes</span>, I wrote a <span class="highlight">@mixin</span> and a placeholder.</p>
-	  <pre>
-	    <code>
+	  <pre><code>
 @mixin peak($translateY) {
   transform: translateY($translateY) scale(1);
   opacity: 0.9;
-}
-	    </code>
-	  </pre>
+}</code></pre>
 	  <p>I used this <span class="highlight">@mixin</span> at the keyframe for the peak of the circles. I chose <span class="highlight">@mixin</span> so that I can pass on different values for <span class="highlight">translateY</span>.</p>
-	  <pre>
-	    <code>
-%bottom {
+	  <pre><code>%bottom {
   transform: translateY(0) scale(0.8);
   opacity: 0.25;
-}	      
-	    </code>
-	  </pre>
+}</code></pre>
 	  <p>This placeholder is for the keyframe for when the circles are supposed to be on the ground.</p>
 	  <p>I hope you found this tutorial useful!</p>
 	</div>

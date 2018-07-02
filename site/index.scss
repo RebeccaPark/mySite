@@ -1,5 +1,5 @@
-$font--primary: 'Barlow', sans-serif;
-$font--secondary: 'Slabo 27px', serif;
+$font--primary: sans-serif;//'Barlow', sans-serif;
+$font--secondary: serif;//'Slabo 27px', serif;
 
 $font--xs: 0.6rem;
 $font--s: 0.8rem;
@@ -22,11 +22,9 @@ html, body {
     font-size: 17px;
 }
 
-.Header {
-    display: flex;
+.HeaderWrapper {
     position: relative;
-    align-items: flex-end;
-    padding: 30px 180px;
+    padding: 30px 0;
     border-bottom: 1px solid #E6E6E6;
 
     a, a:hover, a:active, a:visited {
@@ -35,22 +33,20 @@ html, body {
     }
 }
 
+.Header {
+    display: flex;
+    align-items: flex-end;
+    margin: auto auto; 
+    width: 1200px;
+    max-width: 100%;
+}
+
 .Header > div {
     margin: 15px;
     margin-bottom: 0;
     vertical-align: bottom;
     font-size: $font--med;
 }
-
-//.Logo:hover {
-  //  .Header__logo {
-//	animation: dash 3s linear;
-  //  }
-
-    //.Logo__content {
-    //animation: opacity 3s linear;
-    //}
-//}
 
 .Header__logo {
     stroke-dasharray: 1000;
@@ -68,11 +64,6 @@ html, body {
 	stroke-dashoffset: 0;
     }
 }
-
-//.Logo__content {
-  //  opacity: 0;
-    //animation: opacity 3s linear forwards;
-//}
 
 @keyframes opacity {
     from {
@@ -112,9 +103,10 @@ html, body {
 }
 
 .Content {
-    display: flex;
-    padding: 80px 180px;
-    //background-color: $gray--lightest;
+    padding: 5% 0;
+    p {
+	line-height: 1.7;
+    }
 }
 
 .Content__sideMenu {
@@ -140,18 +132,10 @@ html, body {
     }
 }
 
-.Content__previous {
-    text-decoration: none;
-    color: $gray--med;
-    
-    &:visited {
-	color: inherit;
-    }
-}    
-
 .Post {
     margin: 0 auto;
-    width: 50%;
+    width: 650px;
+    max-width: 100%;
 }
 
 .Post__title {
@@ -172,9 +156,10 @@ html, body {
 }
 
 .Postlist {
-    //margin-left: 5rem;
-    flex-grow: 10;
-
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+    
     .Postlist__post {
 	display: block;
 	position: relative;
@@ -257,101 +242,31 @@ pre {
     background-color: $yellow;
 }
 
-@media (max-width: 1400px) {
-    .Post {
-	width: 60%;
-    }
-}
-
-@media (max-width: 1228px) {
-    .Post {
-	width: 70%;
-    }
-}
-
-@media (max-width: 1100px) {
-    .Header {
-	padding: 30px 100px;
-    }
-    .Content {
-	padding: 80px 100px;
-    }
-}
-
-@media (max-width: 950px) {
-    .Header {
-	padding: 30px 50px;
-    }
-
-    .Content {
-	padding: 80px 50px;
-    }
-
-    .Post {
-	width: 90%;
-    }
-}
-
-@media (max-width: 690px) {
-    .Header {
-	padding: 30px 20px;
-    }
-
-    .Content {
-	padding: 80px 20px;
-    }
-
-    .Post {
-	width: 95%;
-    }
-}
-
-
 @media only screen and (min-device-width: 320px) and (max-device-width: 696px) {
-    html, body {
-	margin: 0;
-    }
-    
     .Logo {
 	width: 40px;
 	height: 40px;
     }
 
-    .Header{
-	padding: 20px 13px;
+    .HeaderWrapper{
 	font-size: $font--lg;
 
 	.Header__icons > a {
-	    margin-left: 5px;
 	    font-size: $font--s;
 	}
 
 	.Header__menu {
-	    margin-left: 10px;
-	    margin-right: 0;
 	    font-size: $font--s;
 	}
 
-    }
-    
-    .Content {
-	padding: 20px 13px;
     }
     
     .Content__sideMenu {
 	display: none;
     }
 
-    .Postlist {
-	margin-left: 0;
-    }
-
     .Postlist__date {
 	
-    }
-
-    .Postlist__post {
-	padding: 0.8rem;
     }
 
     .Post__title {
@@ -364,13 +279,5 @@ pre {
 
     .Post__content {
 	font-size: $font--s;
-    }
-    
-    .Content__previous {
-	display: none;
-    }
-    
-    .Post {
-	width: 100%;
     }
 }

@@ -1,18 +1,24 @@
 html, body {
-  font-family: "Barlow", sans-serif;
+  font-family: sans-serif;
   font-size: 17px;
+}
+
+.HeaderWrapper {
+  position: relative;
+  padding: 30px 0;
+  border-bottom: 1px solid #E6E6E6;
+}
+.HeaderWrapper a, .HeaderWrapper a:hover, .HeaderWrapper a:active, .HeaderWrapper a:visited {
+  text-decoration: none;
+  color: inherit;
 }
 
 .Header {
   display: flex;
-  position: relative;
   align-items: flex-end;
-  padding: 30px 180px;
-  border-bottom: 1px solid #E6E6E6;
-}
-.Header a, .Header a:hover, .Header a:active, .Header a:visited {
-  text-decoration: none;
-  color: inherit;
+  margin: auto auto;
+  width: 1200px;
+  max-width: 100%;
 }
 
 .Header > div {
@@ -71,8 +77,10 @@ html, body {
 }
 
 .Content {
-  display: flex;
-  padding: 80px 180px;
+  padding: 5% 0;
+}
+.Content p {
+  line-height: 1.7;
 }
 
 .Content__sideMenu {
@@ -95,21 +103,14 @@ html, body {
   color: #FF3372;
 }
 
-.Content__previous {
-  text-decoration: none;
-  color: rgba(0, 0, 0, 0.6);
-}
-.Content__previous:visited {
-  color: inherit;
-}
-
 .Post {
   margin: 0 auto;
-  width: 50%;
+  width: 650px;
+  max-width: 100%;
 }
 
 .Post__title {
-  font-family: "Barlow", sans-serif;
+  font-family: sans-serif;
   font-size: 2rem;
   color: rgba(0, 0, 0, 0.8);
 }
@@ -126,7 +127,9 @@ html, body {
 }
 
 .Postlist {
-  flex-grow: 10;
+  width: 1200px;
+  max-width: 100%;
+  margin: 0 auto;
 }
 .Postlist .Postlist__post {
   display: block;
@@ -153,7 +156,7 @@ html, body {
   margin-bottom: 1rem;
 }
 .Postlist .Postlist__post .Postlist__title {
-  font-family: "Barlow", sans-serif;
+  font-family: sans-serif;
   font-size: 1rem;
 }
 .Postlist .Postlist__post .Postlist__colorStick {
@@ -199,89 +202,24 @@ pre {
   background-color: #FFFED7;
 }
 
-@media (max-width: 1400px) {
-  .Post {
-    width: 60%;
-  }
-}
-@media (max-width: 1228px) {
-  .Post {
-    width: 70%;
-  }
-}
-@media (max-width: 1100px) {
-  .Header {
-    padding: 30px 100px;
-  }
-
-  .Content {
-    padding: 80px 100px;
-  }
-}
-@media (max-width: 950px) {
-  .Header {
-    padding: 30px 50px;
-  }
-
-  .Content {
-    padding: 80px 50px;
-  }
-
-  .Post {
-    width: 90%;
-  }
-}
-@media (max-width: 690px) {
-  .Header {
-    padding: 30px 20px;
-  }
-
-  .Content {
-    padding: 80px 20px;
-  }
-
-  .Post {
-    width: 95%;
-  }
-}
 @media only screen and (min-device-width: 320px) and (max-device-width: 696px) {
-  html, body {
-    margin: 0;
-  }
-
   .Logo {
     width: 40px;
     height: 40px;
   }
 
-  .Header {
-    padding: 20px 13px;
+  .HeaderWrapper {
     font-size: 1.2rem;
   }
-  .Header .Header__icons > a {
-    margin-left: 5px;
+  .HeaderWrapper .Header__icons > a {
     font-size: 0.8rem;
   }
-  .Header .Header__menu {
-    margin-left: 10px;
-    margin-right: 0;
+  .HeaderWrapper .Header__menu {
     font-size: 0.8rem;
-  }
-
-  .Content {
-    padding: 20px 13px;
   }
 
   .Content__sideMenu {
     display: none;
-  }
-
-  .Postlist {
-    margin-left: 0;
-  }
-
-  .Postlist__post {
-    padding: 0.8rem;
   }
 
   .Post__title {
@@ -294,13 +232,5 @@ pre {
 
   .Post__content {
     font-size: 0.8rem;
-  }
-
-  .Content__previous {
-    display: none;
-  }
-
-  .Post {
-    width: 100%;
   }
 }
