@@ -24,21 +24,25 @@
 	</div>
 	<div class="Content">
 	  <div class="Post">
-	    <div class="Post__title">Understanding bind by Implementing</div>
+	    <div class="Post__title">Reimplementing Function.prototype.bind for science</div>
 	    <div class="Post__date"></div>
 	    <div class="Post__content">
-	      <p>If you work with Javascript at all, sooner or later you will come across <span class="highlight">bind</span>. It makes sure that a function is invoked with the *this* keyword that you have assigned to it. Another common use of <span class="highlight">bind</span> is pre-populating function argument(s) for later use. For most of the time I have regarded it as magical. But I decided to break the mystery and get to the nitty gritty of it by implementing my own versions of it. In this post I will be demonstrating my implementation of <span class="highlight">bind</span> in ES5 called <span class="highlight">bind2</span> and in ES6 called <span class="highlight">bind3</span>.</p>
+	      <p>If you work with Javascript at all, sooner or later you will come across <span class="highlight">bind</span>. It returns a function that uses the <span class="highlight">this</span> keyword that you tell it to use. Another common use of <span class="highlight">bind</span> is pre-populating function argument(s) for later use. For most of the time I have regarded <span class="highlight">bind</span> as something that happens magically. But I decided to break the mystery and get to the nitty gritty of it by implementing my own versions. In this post I demonstrate my implementations of <span class="highlight">bind</span> in ES5(<span class="highlight">bind2</span>) and in ES6(<span class="highlight">bind3</span>).</p>
 	      <h1><span class="highlight">bind</span> in detail</h1>
-	      <p><span class="highlight">bind</span> is a Javascript method part of the prototype for the Function object. The first argument *bind* receives becomes the *this* keyword for the function returned by the *bind* method. Any following argument after the first will be remembered to be used as arguments for the returned function.</p>
-	      <p>Let's look at an example that uses <span class="highlight">bind</span>. Later we will use this to demonstrate that our versions of <span class="highlight">bind</span> works correctly.</p>
+	      <p><span class="highlight">bind</span> is a built-in Javascript method part of the prototype of the Function object. The first argument <span class="highlight">bind</span> receives becomes the <span class="highlight">this</span> keyword for the function returned by the <span class="highlight">bind</span> method. Any following argument after the first is remembered to be used as arguments for the returned function.</p>
+	      <p>Let's look at an example that uses <span class="highlight">bind</span>. Later I use this example to demonstrate that my implementations work correctly.</p>
 	      <h3>Using <span class="highlight">bind</span></h3>
-	      <script async src="//jsfiddle.net/rebeccapark/qf0Lsbwo/embed/result/"></script>
-	      <p>This example creates four buttons with callbacks to be executed on 'click' event. The callbacks are the methods for *myDog* object, an instance of the *Dog* prototype.</p>
-	      <script async src="//jsfiddle.net/rebeccapark/qf0Lsbwo/1/embed/js,html,result/"></script>
-	      <p>The <span class="highlight">Dog</span> prototype is a representation of a dog. It has a property <span class="highlight">name</span> that receives its value when an instance is initialized. It also has two methods <span class="highlight">sayName</span> and <span class="highlight">sayWeight</span> used as callbacks for the buttons. They respectively display the name and the weight of the dog in the HTML element with id <span>result</span>.</p>
-	      <p>As an instance of <span class="highlight">Dog</span>, I created <span class="highlight">myDog</span> to represent my lovely dog named Mumu. The buttons' callbacks are meant ot use information from myDog. But because the first two buttons' callbacks are not bound to <span class="highlight">myDog</span>, they lose the intended <span class="highlight">this</span> keyword and fail to deliver the proper messages. Thankfully the last two buttons' callbacks are properly bound to the <span class="highlight">myDog</span> object and display the message properly with the name 'Mumu'.</p>
+	      <div class="code--embeded">
+		<script async src="//jsfiddle.net/rebeccapark/qf0Lsbwo/embed/result/"></script>
+	      </div>
+	      <p>This example creates four buttons with callbacks to be executed on 'click' event. The callbacks are the methods for <span class="highlight">myDog</span> object, an instance of the <span class="highlight">Dog</span> prototype.</p>
+	      <div class="code--embeded">
+		<script async src="//jsfiddle.net/rebeccapark/qf0Lsbwo/1/embed/js,html,result/"></script>
+	      </div>
+	      <p>The <span class="highlight">Dog</span> prototype is a representation of a dog. It has a property <span class="highlight">name</span> that receives its value when an instance is initialized. It also has two methods <span class="highlight">sayName</span> and <span class="highlight">sayWeight</span> used as callbacks for the buttons. They respectively display the name and the weight of the dog in a DOM elmeent with identifier <span class="highlight">#result</span>.</p>
+	      <p>As an instance of <span class="highlight">Dog</span>, I created <span class="highlight">myDog</span> object to represent my lovely fur friend named Mumu. The buttons' callbacks are meant ot use information from <span class="highlight">myDog</span> object. But because the first two buttons' callbacks are not bound to <span class="highlight">myDog</span>, they lose the intended <span class="highlight">this</span> keyword and fail to deliver the proper messages. Thankfully the last two buttons' callbacks are properly bound to the <span class="highlight">myDog</span> object and display the message properly with the name 'Mumu'.</p>
 
-	      <p>Now let's move onto the implementations!</p>
+	      <p>Now let's move onto the reimplementations!</p>
 	      
 	      <h1>bind2 with ES5</h1>
 	      <pre><code>
@@ -54,14 +58,17 @@ Function.prototype.bind2 = function() {
   
   return returnedFunc;
 }</code></pre>
-	      <p><span class="highlight">bind</span> is a method in the prototype of Function object. So *bind2* also extends the prototype of the Function object.</p>
-	      <p>There are three objects that <span class="highlight">bind2</span> needs to pass onto <span class="highlight">returnedFunc</span> for its use:  <br />
-		1. The function that <span class="highlight">bind2</span> is called on. We store that function in *var originalFunc*. <br />
-		2. The object that needs to be the <span class="highlight">this</span>. We store that object in <span class="highlight">var self</span>.<br />
-		3. The arguments passed onto the bind function except for the very first argument. We store that array in <span class="highlight">var argsOuter</span>.</p>
-	      <p>When <span class="highlight">returnedFunc</span> is invoked, it returns the result of invoking <span class="highlight">originalFunc</span> with <span class="highlight">apply</span> method. The apply method takes the <span class="highlight">self</span> object (number 2 from above) to reference for the <span class="highlight">this</span> object. The second argument <span class="highlight">argsInner</span> is an array of arguments that passes onto <span class="highlight">originalFunc</span> to be used as its own arguments. Note that <span class="highlight">argsInner</span> is <span class="highlight">argsOuter</span> concatenated with the <span class="highlight">arguments</span> object in <span class="highlight">returnedFunc</span>. This makes sure that any additional argument passed while invoking <span class="highlight">returnedFunc</span> is not lost.</p>
-	      <p>Now let's see if <span class="highlight">bind2</span> worked using the <span class="highlight">myDog</span> example. This time we will be using only 2 buttons that are bound by <span class="highlight">bind2</span>:</p>
-	      <script async src="//jsfiddle.net/rebeccapark/kmbgtL9y/embed/result/"></script>
+	      <p><span class="highlight">bind2</span> extends the prototype of the Function object taking it after the original <span class="highlight">bind</span>.</p>
+	      <p>There are three objects that <span class="highlight">bind2</span> needs to pass onto <span class="highlight">returnedFunc</span> for later use:  <br />
+		1. The function that <span class="highlight">bind2</span> is called on. We store that function in <span class="highlight">originalFunc</span>. <br />
+		2. The first argument passed on to the bind function. This is the object that needs to be the <span class="highlight">this</span>. We store that object in <span class="highlight">self</span>.<br />
+		3. The arguments passed onto the bind function except for the very first argument. We store them in an array in <span class="highlight">argsOuter</span>. <br />
+		(*Note that to define <span>argsOuter</span>, we extrapolate <span class="highlight">slice</span> method from the Array prototype. This is because although <span class="highlight">arguments</span> is an Array-like object, it is not a real Array and does not have the Array methods. You can read more about it from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments#Specifications">MDN</a>)</p>
+	      <p>When <span class="highlight">returnedFunc</span> is invoked, it returns the result of invoking <span class="highlight">originalFunc</span> with <span class="highlight">apply</span> method. The apply method takes the <span class="highlight">self</span> object (number 2 from above) as its first argument to reference for the <span class="highlight">this</span> object. The second argument <span class="highlight">argsInner</span> is an array of arguments that passes onto <span class="highlight">originalFunc</span> to be used as its own arguments. Note that <span class="highlight">argsInner</span> is <span class="highlight">argsOuter</span> concatenated with the <span class="highlight">arguments</span> object of <span class="highlight">returnedFunc</span>. This makes sure that any additional argument passed while invoking <span class="highlight">returnedFunc</span> is not lost.</p>
+	      <p>Now let's see if <span class="highlight">bind2</span> works using the <span class="highlight">myDog</span> example. This time we only use 2 buttons that are bound by <span class="highlight">bind2</span>:</p>
+	      <div class="code--embeded">
+		<script async src="//jsfiddle.net/rebeccapark/kmbgtL9y/embed/result/"></script>
+	      </div>
 	      <p>Voila! Seems like it's doing its job :D</p>
 	      <p>Now on to ES6!</p>
 	      <h1>bind3 with ES6</h1>
@@ -70,12 +77,14 @@ Function.prototype.bind2 = function() {
 Function.prototype.bind3 = function(self, ...argsOuter) {
   return (...argsInner) => this.apply(self, [...argsOuter, ...argsInner]);
 }</code></pre>
-	      <p><span class="highlight">bind3</span> receives one argument named <span class="highlight">self</span> plus any number of arguments. The <span class="highlight">...argsOuter</span> expression is an example of spread syntax. This means that any number of arguments received after the first argument is stored in <span class="highlight">argsOuter</span> as an array. Similarly, the returned function also receives any number of arguments and store them in array <span class="highlight">argsInner</span>. </p>
+	      <p><span class="highlight">bind3</span> receives one argument named <span class="highlight">self</span> plus any number of arguments. The <span class="highlight">...argsOuter</span> expression is an example of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax">spread syntax</a>. This means that any number of arguments received after the first argument is stored in <span class="highlight">argsOuter</span> as an array. Similarly, the returned function also receives any number of arguments and store them in array <span class="highlight">argsInner</span>. </p>
 	      <p>In the previous example, we had to store the original function that <span class="highlight">bind2</span> was called on in <span class="highlight">originalFunc</span>. We don't need to do this for <span class="highlight">bind3</span> because we can use the arrow function, which carries over the outer function's <span class="highlight">this</span>. This means <span class="highlight">this.apply</span> is equivalent to the previous example's <span class="highlight">originalFunc.apply</span>.</p>
-	      <p>Lastly, we concatenate the <span class="highlight">argsOuter</span> and <span class="highlight">argsInner</span> using the spread syntax again. This will expand the two arrays and put elemenets in both arrays in a single array.</p>
+	      <p>Lastly, we concatenate the <span class="highlight">argsOuter</span> and <span class="highlight">argsInner</span> using the spread syntax again. This will expand the two arrays and put elemenets from both arrays in a single array.</p>
 	      <p>Moment of truth again:</p>
-	      <script async src="//jsfiddle.net/rebeccapark/x53ru24m/2/embed/result/"></script>
-	      <p>Seems like it did the trick. Hope you found this helpful :)</p>
+	      <div class="code--embeded">
+		<script async src="//jsfiddle.net/rebeccapark/x53ru24m/2/embed/result/"></script>
+	      </div>
+	      <p>Seems like that did the trick. Hope you found this helpful :)</p>
 	    </div>
 	  </div>
 	</div>

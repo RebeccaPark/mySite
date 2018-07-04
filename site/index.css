@@ -198,6 +198,11 @@ pre {
   overflow: scroll;
 }
 
+.code--embeded > iframe {
+  min-height: 150px;
+  max-height: max-content;
+}
+
 .highlight {
   background-color: #FFFED7;
 }
