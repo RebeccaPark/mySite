@@ -3,6 +3,18 @@ html, body {
   font-size: 17px;
 }
 
+a {
+  color: #4980ec;
+}
+
+h1 {
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
 .HeaderWrapper {
   position: relative;
   padding: 30px 0;
@@ -111,7 +123,7 @@ html, body {
 
 .Post__title {
   font-family: sans-serif;
-  font-size: 2rem;
+  font-size: 2.1rem;
   color: rgba(0, 0, 0, 0.8);
 }
 
@@ -124,6 +136,13 @@ html, body {
   color: rgba(0, 0, 0, 0.6);
   font-size: 1.2rem;
   margin-top: 3rem;
+}
+.Post__content p:first-of-type {
+  padding-bottom: 1.5rem;
+}
+.Post__content .section {
+  border-top: 1px solid #d4d4d4;
+  padding: 2rem 0 1.5rem 0;
 }
 
 .Postlist {
@@ -197,10 +216,21 @@ pre {
   padding: 0 1.5rem;
   overflow: scroll;
 }
+pre > code {
+  background: initial;
+  font-size: 0.8rem;
+}
 
-.code--embeded > iframe {
-  min-height: 150px;
+code {
+  background: #ffe6f6;
+  padding: 3px 5px;
+  font-size: 1rem;
+}
+
+.code--embedded > iframe {
+  min-height: 250px;
   max-height: max-content;
+  box-shadow: 0px 2px 2px 1px #ccc;
 }
 
 .highlight {

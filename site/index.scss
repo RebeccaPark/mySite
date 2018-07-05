@@ -5,12 +5,14 @@ $font--xs: 0.6rem;
 $font--s: 0.8rem;
 $font--med: 1rem;
 $font--lg: 1.2rem;
-$font--xl: 2rem;
+$font--xlg: 1.75rem;
+$font--xxl: 2.1rem;
 
 $white: #FFFFFF;
 $pink: #FF3372;
 $yellow: #FFFED7;
 $gray--lightest: #F9F9F9;
+$gray--lighter: #d4d4d4;
 $gray--light: rgba(#000000, 0.4);
 $gray--med: rgba(#000000, 0.6);
 $gray--dark: rgba(#000000, 0.8);
@@ -20,6 +22,18 @@ $gray--border: #E6E6E6;
 html, body {
     font-family: $font--primary;
     font-size: 17px;
+}
+
+a {
+    color: #4980ec;
+}
+
+h1 {
+    font-size: $font--xlg;
+}
+
+h3 {
+    font-size: $font--lg;
 }
 
 .HeaderWrapper {
@@ -140,7 +154,7 @@ html, body {
 
 .Post__title {
     font-family: $font--primary;
-    font-size: $font--xl;
+    font-size: $font--xxl;
     color: $gray--dark;
 }
 
@@ -153,6 +167,16 @@ html, body {
     color: $gray--med;
     font-size: $font--lg;
     margin-top: 3rem;
+
+    p:first-of-type {
+	padding-bottom: 1.5rem;
+    }
+    
+    .section {
+	border-top: 1px solid $gray--lighter;
+	padding: 2rem 0 1.5rem 0;
+    }
+    
 }
 
 .Postlist {
@@ -236,11 +260,23 @@ pre {
     background: $gray--lightest;
     padding: 0 1.5rem;
     overflow: scroll;
+    
+    & > code {
+	background: initial;
+	font-size: $font--s;
+    }
 }
 
-.code--embeded > iframe {
-    min-height: 150px;
+code {
+    background: #ffe6f6;
+    padding: 3px 5px;
+    font-size: $font--med;
+}
+
+.code--embedded > iframe {
+    min-height: 250px;
     max-height: max-content;
+    box-shadow: 0px 2px 2px 1px #ccc;
 }
 
 .highlight {
