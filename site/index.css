@@ -137,12 +137,13 @@ h3 {
   font-size: 1.2rem;
   margin-top: 3rem;
 }
-.Post__content p:first-of-type {
-  padding-bottom: 1.5rem;
-}
 .Post__content .section {
   border-top: 1px solid #d4d4d4;
   padding: 2rem 0 1.5rem 0;
+}
+.Post__content .section:first-child {
+  padding: 0 0 1.5rem 0;
+  border: none;
 }
 
 .Postlist {

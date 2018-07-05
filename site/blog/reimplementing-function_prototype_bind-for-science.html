@@ -1,5 +1,6 @@
 <html>
   <head>
+    <title>rebeccapark.io</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
     <link rel="stylesheet" href="/index.css">
@@ -24,10 +25,13 @@
 	</div>
 	<div class="Content">
 	  <div class="Post">
-	    <div class="Post__title">Reimplementing Function.prototype.bind for science</div>
-	    <div class="Post__date"></div>
-	    <div class="Post__content">
-	      <p>If you work with Javascript at all, sooner or later you will come across <code>bind</code>. It returns a function whose 'this' object is the first argument passed to <code>bind</code>. Another common use of <code>bind</code> is pre-populating function argument(s) for later use. Bind was too magical, so I decided to reimplement it to see if I could uderstand it better. In this post I'll walk through an implementations of bind in ES5(bind2) and in ES6(bind3).</p>
+	    <div class="section">
+	      <div class="Post__title">Reimplementing Function.prototype.bind for science</div>
+	      <div class="Post__date"></div>
+	      <div class="Post__content">
+		<div class="section">
+		  <p>If you work with Javascript at all, sooner or later you will come across <code>bind</code>. It returns a function whose 'this' object is the first argument passed to <code>bind</code>. Another common use of <code>bind</code> is pre-populating function argument(s) for later use. Bind was too magical, so I decided to reimplement it to see if I could uderstand it better. In this post I'll walk through an implementations of bind in ES5(bind2) and in ES6(bind3).</p>
+		</div>
 	      <div class="section">
 		<h1>Function.protoytpe.bind in detail</h1>
 		<p><code>bind</code> is a built-in Javascript method as part of <code>Function</code>'s prototype. The first argument <code>bind</code> receives becomes the <code>this</code> keyword for the function returned by the <code>bind</code> method. Any following argument after the first is remembered to be used as arguments for the returned function.</p>
@@ -96,6 +100,6 @@
 	    </div>
 	  </div>
 	</div>
-	
+	</div>
   </body>
 </html>

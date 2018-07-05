@@ -1,5 +1,6 @@
 <html>
   <head>
+    <title>rebeccapark.io</title>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-101535521-2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -35,11 +36,14 @@
 	<div class="Post__title">Bouncing Loader</div>
 	<div class="Post__date">May 15, 2018</div>
 	<div class="Post__content">
-	  <p>I wanted to make a loader, and I wanted it to look like this:</p>
-<p data-height="265" data-theme-id="0" data-slug-hash="zjPQpb" data-default-tab="result" data-user="RebeccaPark" data-embed-version="2" data-pen-title="Bouncing Loader" class="codepen">See the Pen <a href="https://codepen.io/RebeccaPark/pen/zjPQpb/">Bouncing Loader</a> by Rebecca (<a href="https://codepen.io/RebeccaPark">@RebeccaPark</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-	  <p>This is how I went about making this css animation.</p>
-	  <h1>HTML</h1>
+	  <div class="section">
+	    <p>I wanted to make a loader, and I wanted it to look like this:</p>
+	    <p data-height="265" data-theme-id="0" data-slug-hash="zjPQpb" data-default-tab="result" data-user="RebeccaPark" data-embed-version="2" data-pen-title="Bouncing Loader" class="codepen">See the Pen <a href="https://codepen.io/RebeccaPark/pen/zjPQpb/">Bouncing Loader</a> by Rebecca (<a href="https://codepen.io/RebeccaPark">@RebeccaPark</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+	    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+	    <p>This is how I went about making this css animation.</p>
+	  </div>
+	  <div class="section">
+	    <h1>HTML</h1>
 	  <p>In terms of HTML, I really didn't need much:</p>
 	  <pre><code>&lt;div class="loader"&gt;
   &lt;div class="wrapper"&gt;
@@ -48,6 +52,8 @@
     &lt;div class="circle circle--3"&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
+	  </div>
+	  <div class="section">
 	  <h1>Animating</h1>
 	  <p>For animating, I created keyframes for each circle. <span class="highlight">@keyframes move--1</span> for <span class="highlight">.circle--1</span>, <span class="highlight">@keyframes move--2</span> for <span class="highlight">.circle--2</span>, and <span class="highlight">@keyframes move--3</span> for <span class="highlight">.circle--3</span></p>
 	  <h3>translateY</h3>
@@ -121,6 +127,8 @@
 	  <p>So I added in variation in opacity and scaling to the animation. When on ground floor, the circles have <span class="highlight">opacity: 0.25</span> and <span class="highlight">transform: scale(0.8)</span>, and at the peak, they have <span class="highlight">opacity: 0.9</span> and <span class="highlight">transform: scale(1)</span>. This results in the animation we want:</p>
 	  <p data-height="265" data-theme-id="0" data-slug-hash="zjPQpb" data-default-tab="result" data-user="RebeccaPark" data-embed-version="2" data-pen-title="Bouncing Loader" class="codepen">See the Pen <a href="https://codepen.io/RebeccaPark/pen/zjPQpb/">Bouncing Loader</a> by Rebecca (<a href="https://codepen.io/RebeccaPark">@RebeccaPark</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+	  </div>
+	  <div class="section">
 	  <h1>Clean up</h1>
 	  <p>For the redundant parts in the <span class="highlight">@keyframes</span>, I wrote a <span class="highlight">@mixin</span> and a placeholder.</p>
 	  <pre><code>
@@ -135,6 +143,7 @@
 }</code></pre>
 	  <p>This placeholder is for the keyframe for when the circles are supposed to be on the ground.</p>
 	  <p>I hope you found this tutorial useful!</p>
+	  </div>
 	</div>
       </div>
     </div>
