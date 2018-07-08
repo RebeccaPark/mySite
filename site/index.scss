@@ -187,6 +187,7 @@ h3 {
     
     .Postlist__post {
 	display: block;
+	color: $gray--dark;
 	position: relative;
 	border: 1px solid $gray--border;
 	padding: 2.5rem;
@@ -196,7 +197,8 @@ h3 {
 	text-decoration: none;
 
 	&:visited {
-	    color: inherit;
+	    text-decoration: none;
+	    color: $gray--dark;
 	}
 	
 	&:first-of-type {
@@ -212,8 +214,10 @@ h3 {
 	    margin-bottom: 1rem;
 	}
 	.Postlist__title {
-	    font-family: $font--primary;//--secondary;
+	    font-family: $font--primary;
 	    font-size: $font--med;
+	    text-decoration: none;
+	    color: $gray--dark;
 	}
 
 	.Postlist__colorStick {

@@ -1,6 +1,14 @@
 <html>
   <head>
     <title>rebeccapark.io</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-101535521-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      gtag('config', 'UA-101535521-2');
+    </script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
     <link rel="stylesheet" href="/index.css">
@@ -30,23 +38,23 @@
 	      <div class="Post__date"></div>
 	      <div class="Post__content">
 		<div class="section">
-		  <p>If you work with Javascript at all, sooner or later you will come across <code>bind</code>. It returns a function whose 'this' object is the first argument passed to <code>bind</code>. Another common use of <code>bind</code> is pre-populating function argument(s) for later use. Bind was too magical, so I decided to reimplement it to see if I could uderstand it better. In this post I'll walk through an implementations of bind in ES5(bind2) and in ES6(bind3).</p>
+		  <p><code>bind</code> is used all the time in React code. I generally understood it, but it still seemed a little magical. So I reimplemented it in ES5 (bind2) and ES6 (bind3).</p>
 		</div>
 	      <div class="section">
-		<h1>Function.protoytpe.bind in detail</h1>
-		<p><code>bind</code> is a built-in Javascript method as part of <code>Function</code>'s prototype. The first argument <code>bind</code> receives becomes the <code>this</code> keyword for the function returned by the <code>bind</code> method. Any following argument after the first is remembered to be used as arguments for the returned function.</p>
+		<h1>Function.prototype.bind in detail</h1>
+		<p>The first argument <code>bind</code> receives becomes the <code>this</code> keyword in the function returned by the <code>bind</code> method. Any following argument after the first is remembered to be used as arguments for the returned function.</p>
 		<p>Let's look at an example that uses <code>bind</code>. Later I use this example to demonstrate that my implementations work correctly.</p>
 		<h3>Usage</h3>
 		<div class="code--embedded">
 		  <script async src="//jsfiddle.net/rebeccapark/qf0Lsbwo/embed/result/"></script>
 		</div>
-		<p>This example creates four buttons with callbacks to be executed on 'click' event. The callbacks are the methods for <code>myDog</code> object, an instance of the <code>Dog</code> prototype.</p>
+		<p>This example creates four buttons with callbacks to be executed on 'click'. The callbacks are methods on <code>myDog</code> object, an instance of the <code>Dog</code> prototype.</p>
 		<div class="code--embedded">
 		  <script async src="//jsfiddle.net/rebeccapark/qf0Lsbwo/1/embed/js,html,result/"></script>
 		</div>
 		<p><small>For macOS users: the JSFiddle snippet has more content if you scroll.</small></p>
-		<p>The <code>Dog</code> prototype is a representation of a dog. It has a property <code>name</code> that receives its value when an instance is initialized. It also has two methods <code>sayName</code> and <code>sayWeight</code> used as callbacks for the buttons. They respectively display the name and the weight of the dog in a DOM element with identifier <code>#result</code>.</p>
-		<p>As an instance of <code>Dog</code>, I created <code>myDog</code> object to represent my lovely fur friend named Mumu. The buttons' callbacks are meant to use information from <code>myDog</code> object. But because the first two buttons' callbacks are not bound to <code>myDog</code>, they lose the intended <code>this</code> keyword and fail to deliver the proper messages. Thankfully the last two buttons' callbacks are properly bound to the <code>myDog</code> object and display the message properly with the name 'Mumu'.</p>
+		<p>The <code>Dog</code> prototype is a representation of a dog. It has a property <code>name</code> that receives its value when an instance is initialized. It also has two methods <code>sayName</code> and <code>sayWeight</code> passed as callbacks for the buttons. They respectively display the name and the weight of the dog in a DOM element <code>#result</code>.</p>
+		<p><code>myDog</code> (representing my real-life furry friend, Mumu) is an instance of <code>Dog</code>. The buttons' callbacks are meant to use information in <code>myDog</code> object. But because the first two buttons' callbacks are not bound to <code>myDog</code>, they lose the intended <code>this</code> keyword and fail to deliver the proper messages. Thankfully the last two buttons' callbacks are properly bound to the <code>myDog</code> object and display the message properly with the name 'Mumu'.</p>
 		
 		<p>Now let's move on to the reimplementations!</p>
 	      </div>
@@ -70,11 +78,11 @@
 		    <li>The function that <code>bind2</code> is called on. We store that function in <code>originalFunc</code>.</li>
 		    <li>The first argument passed on to the bind function. This is the object that will be the new <code>this</code>. We store that object in <code>self</code>.</li>
 		    <li>The arguments passed onto the bind function except for the very first argument. We store them in an array in <code>argsOuter</code>.</li>
-		    <p><small>Note that to define <span>argsOuter</span>, we use the <code>slice</code> method from the Array prototype. This is because although <code>arguments</code> is an Array-like object, it is not a real Array and does not have the Array methods. You can read more about it from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments#Specifications">MDN</a>).</small></pw>
+		    <p><small>Note that to define <span>argsOuter</span>, we use the <code>slice</code> method from the Array prototype. This is because although <code>arguments</code> is an Array-like object, it is not a real Array and does not have Array methods. You can read more about it from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments#Specifications">MDN</a>).</small></pw>
 </ol>
 </p>
 <p>When <code>returnedFunc</code> is invoked, it returns the result of invoking <code>originalFunc</code> with <code>apply</code> method. The apply method's first argument will be the <code>this</code> object in the function being <code>apply</code>-ed. The second argument <code>argsInner</code> is an array of arguments that passes onto <code>originalFunc</code> to be used as its own arguments. Note that <code>argsInner</code> is <code>argsOuter</code> concatenated with the <code>arguments</code> object of <code>returnedFunc</code>. This makes sure that any additional argument passed while invoking <code>returnedFunc</code> is not lost.</p>
-<p>Now let's see if <code>bind2</code> works using the <code>myDog</code> example. This time we only use 2 buttons that are bound by <code>bind2</code>:</p>
+<p>Now let's see if <code>bind2</code> works using the <code>myDog</code> example. This time we only use 2 buttons that are bound with <code>bind2</code>:</p>
 <div class="code--embedded">
   <script async src="//jsfiddle.net/rebeccapark/kmbgtL9y/embed/result/"></script>
 </div>
@@ -89,8 +97,8 @@
   return (...argsInner) => this.apply(self, [...argsOuter, ...argsInner]);
 }</code></pre>
 	      <p><code>bind3</code> receives one argument named <code>self</code> plus any number of arguments. The <code>...argsOuter</code> expression is an example of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax">spread syntax</a>. This means that any number of arguments received after the first argument is stored in <code>argsOuter</code> as an array. Similarly, the returned function also receives any number of arguments and store them in array <code>argsInner</code>. </p>
-	      <p>In the previous example we had to store the original function that <code>bind2</code> was called on in <code>originalFunc</code>. We don't need to do this for <code>bind3</code> because we can use the arrow function, which does not redefine <code>this</code> but grabs it from the scope in which it is defined. This means <code>this.apply</code> is equivalent to the previous example's <code>originalFunc.apply</code>.</p>
-	      <p>Lastly, we concatenate the <code>argsOuter</code> and <code>argsInner</code> using the spread syntax again. This will expand the two arrays and put elements from both arrays in a single array.</p>
+	      <p>In the previous example we had to store the original function that <code>bind2</code> was called on in <code>originalFunc</code>. We don't need to do this for <code>bind3</code> because we can use fat arrow syntax, which does not redefine <code>this</code> but grabs it from the scope in which it is defined. This means <code>this.apply</code> is equivalent to the previous example's <code>originalFunc.apply</code>.</p>
+	      <p>Lastly, we concatenate the <code>argsOuter</code> and <code>argsInner</code> using spread syntax again. This will expand the two arrays and put elements from both arrays in a single array.</p>
 	      <p>Moment of truth again:</p>
 	      <div class="code--embedded">
 		<script async src="//jsfiddle.net/rebeccapark/x53ru24m/2/embed/result/"></script>
